@@ -1,0 +1,17 @@
+.navbar{
+    border: 1px solid red;
+    height: 50px;
+    display: flex;
+    align-items: center;
+}
+
+ul {
+    width: 60%;
+    display: flex;
+    justify-content: space-evenly;
+    justify-content: space-between;
+}
+
+ul > li {
+    list-style: none;
+}

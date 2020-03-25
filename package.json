@@ -5,8 +5,8 @@
   "main": "index.js",
   "scripts": {
     "serve": "live-server public/ ",
-    "build": "webpack --mode=development --watch",
-    "dev-server": "webpack-dev-server"
+    "build": "webpack --watch",
+    "dev-server": "webpack-dev-server --open"
   },
   "keywords": [],
   "author": "",
