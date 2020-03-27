@@ -1,0 +1,104 @@
+.main-layout{
+    display: flex;
+    /* flex-wrap: wrap; */
+}
+
+.image-column{
+    flex: 3;
+    overflow: scroll; 
+    position: relative;flex:3;
+    height: calc( 100vh - 80px) ;
+    overflow: scroll;
+    border: 1px solid black;
+    position: relative;
+}
+
+.crop-area{
+    
+    height: 1080px;
+    width: 1920px;
+    z-index: -1;
+}
+
+.img-tools{
+    position: fixed;
+    float: right;
+    padding: 10px;
+    z-index: 1;
+}
+.img-tools .btn.zoom{
+    background-color:#818181;
+    width: 40px;
+    height: 40px;
+    border-radius: 50%;
+    cursor: pointer;
+    color: white;
+    font-size: 22px;
+    outline: none;
+}
+
+
+.results{
+    flex: 1;
+    position: relative;
+}
+
+.results h2{
+    background-color: #2d2c2c;
+    padding: 20px 10px;
+    color: white;
+    font-size: 15px;
+
+}
+label{
+    display: block;
+    padding: 10px;
+}
+textarea{
+    display: block;
+    margin: 10px;
+    width: calc(100% - 30px);
+    height: 250px;
+    outline: none;
+}
+
+header{
+    display: flex;
+    height: 80px;
+    background-color: black;
+    justify-content: space-between;
+    align-items: center;
+}
+.logo, .tools{
+    display: flex;
+    align-items: center;
+    margin: 0 10px;
+}
+.tools img{
+    margin: 0 5px;
+    cursor: pointer;
+}
+.results form{
+    position: relative;
+    height: calc(100vh - 135px);
+}
+
+.form-footer{
+    bottom: 0;
+    left:0;
+    right: 0;
+    height: 60px;
+    background-color: #2d2c2c;
+    position: absolute;
+    display: flex;
+    flex-wrap: wrap;
+    justify-content: flex-end;
+}
+
+.btn.submit{
+    width: 50%;
+    background-color: blue;
+    color: white;
+    cursor: pointer;
+    font-size: 18px;
+}

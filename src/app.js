@@ -4,6 +4,7 @@ import AppRoute from './routes/AppRoute'
 
 //testing
 import ImageCrop from './components/ImageCropComponent'
+import ImageOCRComponent from './components/ImageOCRComponent'
 
 import './styles/App.css'
 
@@ -15,4 +16,4 @@ const jsx= (
 )
 
 
-ReactDOM.render(jsx, document.getElementById('app'))
+ReactDOM.render(<ImageOCRComponent />, document.getElementById('app'))

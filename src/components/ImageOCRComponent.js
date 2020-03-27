@@ -1,10 +1,14 @@
 import React, { PureComponent } from 'react'
 import ReactDOM from 'react-dom'
 import ReactCrop from 'react-image-crop'
-import 'react-image-crop/dist/ReactCrop.css' 
+import 'react-image-crop/dist/ReactCrop.css'
+import '../styles/ImageOCR.css'
 import { saveAs } from 'file-saver'
 // const fs= require('web-fs')
 const axios= require('axios')
+import LogoImage from '../imgs/logo.png'
+import UploadImage from '../imgs/upload.png'
+import InfoImage from '../imgs/info.png'
 
 class App extends PureComponent {
     state = {
@@ -97,6 +101,7 @@ class App extends PureComponent {
     }
 
     uploadImage= ()=>{
+      console.log("upload image clicked")
       let imageFile= this.state.blob
       let data= new FormData();
       data.append('file',imageFile, "temp.jpeg")
@@ -110,34 +115,60 @@ class App extends PureComponent {
   
     render() {
       const { crop, croppedImageUrl, src, convertText } = this.state;
+      
   
       return (
         <div className="App">
-          <div>
-            <input type="file" accept="image/*" onChange={this.onSelectFile} />
+
+        <header >
+          <div className="logo">
+              <img src={LogoImage} />
           </div>
-          {src && (
-            <ReactCrop
-              src={src}
-              crop={crop}
-              onImageLoaded={this.onImageLoaded}
-              onComplete={this.onCropComplete}
-              onChange={this.onCropChange}
-            />
-          )}
-          {croppedImageUrl && (
-            <div>
-                <img id="cropped_image" alt="Crop" style={{ maxWidth: '100%' }} src={croppedImageUrl} />
-                <button onClick={this.uploadImage}>Send to OCR</button>
-            </div>
-          )}
-          {
-            convertText && (
-              <div>
-                <h2>{convertText}</h2>
+          <div className="tools">
+              <img src={UploadImage} alt="upload" />
+              <img src={InfoImage} alt="Info" />
+          </div>
+        </header>
+
+        <div>
+          <input type="file" accept="image/*" onChange={this.onSelectFile} />
+        </div>
+
+          <div className="main-layout">
+
+            <div className="image-column">
+              <div className="crop-area">
+                <div className="img-tools">
+                  <button id="zoomin" className="btn zoom">+</button>
+                  <button id="zoomout" className="btn zoom">-</button>
+                </div>
+                {src && (
+                  <ReactCrop
+                    src={src}
+                    crop={crop}
+                    onImageLoaded={this.onImageLoaded}
+                    onComplete={this.onCropComplete}
+                    onChange={this.onCropChange}
+                  />
+                )}
               </div>
-            )
-          }
+              </div>
+            <div className="results">
+            <h2>Text Detection</h2>
+            <form>
+                <div className="form-group">
+                    <label htmlFor="ocrtext">Ocr Text</label>
+                    <textarea name="ocrtext" value={convertText} />
+                </div>
+                <div className="form-footer">
+                    <button type="button" name="extract_text" className="btn submit" onClick={this.uploadImage}>Extract Text</button>
+                    <button type="button" name="save_and_next" className="btn submit">Save & Next</button>
+                </div>
+            </form>
+            </div>
+          
+          </div>
+         
         </div>
       );
     }
